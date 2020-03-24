@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "now --prod --token=$NOW_TOKEN"
+    "deploy": "now --prod -t=$NOW_TOKEN -C -c"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.5",
