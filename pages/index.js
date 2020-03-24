@@ -1,12 +1,5 @@
-import Link from 'next/link'
+import HomePage from '../components/home-page/home-page'
 
-const Home = () => (
-  <div>
-    <h3>This is the landing page</h3>
-    <Link href='/app'>
-      <a>Go to the app</a>
-    </Link>
-  </div>
-)
+const Home = () => <HomePage />
 
 export default Home
