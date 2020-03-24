@@ -14,6 +14,9 @@ import {
   ActionsWrapper,
   MoreLink,
   BtnLabel,
+  MoreLinkLabel,
+  HomeSection,
+  FooterSection,
 } from './home-page.styled'
 
 const HERO_IMAGE = '/bg.jpg'
@@ -31,17 +34,12 @@ const HeroImage = memo(function HeroImage() {
   )
 })
 
-// const OrangeRectangle = memo(function OrangeRectangle() {
-//   return <OrangeRectangleWrapper />
-// })
-
 const HomePage = memo(function HomePage() {
   return (
     <HomeWrapper>
       <main>
-        <section>
+        <HomeSection>
           <HeroImage />
-          {/* <OrangeRectangle /> */}
           <Headline>It's how you manage your events</Headline>
           <Paragraph>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
@@ -51,17 +49,18 @@ const HomePage = memo(function HomePage() {
             <Link href='/app' passHref>
               <CtaButton>
                 <ArrowRightAltIcon />
-                <BtnLabel>Go to the app</BtnLabel>
+                <BtnLabel>Show me the app</BtnLabel>
               </CtaButton>
             </Link>
             <Link href='/about' passHref>
               <MoreLink>
-                <span>More About Event Manager</span>
+                <MoreLinkLabel>More About Event Manager</MoreLinkLabel>
                 <AddIcon />
               </MoreLink>
             </Link>
           </ActionsWrapper>
-        </section>
+        </HomeSection>
+        <FooterSection>Social Links</FooterSection>
       </main>
     </HomeWrapper>
   )
