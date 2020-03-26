@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { blue500, blue800 } from '../theme/colors'
+
 export const NavbarWrapper = styled.header`
   display: flex;
   justify-content: space-between;
@@ -8,8 +10,9 @@ export const NavbarWrapper = styled.header`
   height: 60px;
   padding: 0 1em;
 
-  background-color: #0d66aa;
   color: white;
+  background-color: ${blue500};
+  border: 2px solid ${blue800};
 `
 
 export const NavLinksWrapper = styled.nav`

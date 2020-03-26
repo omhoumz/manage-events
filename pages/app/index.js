@@ -1,5 +1,15 @@
-import MainLayout from '../../components/layouts/main-layout'
+import Head from 'next/head'
 
-const App = () => <MainLayout>App</MainLayout>
+import MainLayout from '../../components/layouts/main-layout'
+import Backlog from '../../containers/backlog/backlog'
+
+const App = () => (
+  <MainLayout>
+    <Head>
+      <title>App</title>
+    </Head>
+    <Backlog />
+  </MainLayout>
+)
 
 export default App

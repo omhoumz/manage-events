@@ -2,12 +2,10 @@ import React, { memo } from 'react'
 import Link from 'next/link'
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
 import AddIcon from '@material-ui/icons/Add'
-// import PropTypes from 'prop-types'
 
 import {
   HomeWrapper,
   HeroImageWrapper,
-  OrangeRectangleWrapper,
   Headline,
   Paragraph,
   CtaButton,

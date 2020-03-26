@@ -3,7 +3,7 @@ import Head from 'next/head'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 
-import { GlobalStyles } from '../components/ui/global-styles.styled'
+import { GlobalStyles } from '../components/ui/theme/global-styles.styled'
 
 const theme = {
   colors: {
