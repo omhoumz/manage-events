@@ -3,25 +3,46 @@ import React, { memo, useState, useEffect } from 'react'
 import IssueComposer from '../../components/backlog/issue-composer/issue-composer'
 import { BacklogWrapper } from './backlog.styled'
 import IssueList from '../../components/backlog/issue-list/issue-list'
+import { loadDB } from '../../core/db/db'
+
+let db = null
+let issueDBCollection = null
+
+;(async () => {
+  db = await loadDB()
+  issueDBCollection = db.firestore().collection('issues')
+})()
+
+const getRTIssues = updateFunc => {
+  issueDBCollection.orderBy('timestamp').onSnapshot(querySnapshot => {
+    const issues = []
+    querySnapshot.forEach(function(doc) {
+      if (doc && doc.exists) {
+        const { label } = doc.data()
+        issues.push({
+          id: doc.id,
+          label,
+        })
+      }
+    })
+    updateFunc(issues)
+  })
+}
 
 const Backlog = memo(function Backlog() {
   const [issues, setIssues] = useState([])
-  const [lastId, setLastId] = useState(0)
 
   useEffect(() => {
-    setIssues([
-      { label: 'Implement latest changes', id: 323 },
-      { label: 'Send feedback emails', id: 324 },
-    ])
-    setLastId(324)
+    getRTIssues(setIssues)
   }, [])
 
-  const addIssue = ({ label }) => {
-    const newLastId = Number(lastId) + 1
-    const newIssue = { label, id: newLastId }
+  const addIssue = async ({ label }) => {
+    const newIssue = {
+      label,
+      timestamp: db.firestore.FieldValue.serverTimestamp(),
+    }
 
-    setIssues(oldIssues => [...oldIssues, { ...newIssue }])
-    setLastId(newLastId)
+    issueDBCollection.add({ ...newIssue })
   }
 
   return (
