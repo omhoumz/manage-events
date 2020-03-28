@@ -4,6 +4,7 @@ import { FormStyled, IssueLabelField } from './issue-form.styled'
 
 const IssueForm = memo(function IssueForm({
   handleIssueCreate,
+  handleCancel,
   focusOnFirstField,
 }) {
   const [label, setLabel] = useState('')
@@ -15,11 +16,23 @@ const IssueForm = memo(function IssueForm({
     setLabel('')
   }
 
+  const handleChange = e => setLabel(e.currentTarget.value)
+
+  const handlekeyDown = e => {
+    if (e.keyCode === 27 || e.key === 'Escape') {
+      if (typeof handleCancel === 'function') {
+        setLabel('')
+        handleCancel()
+      }
+    }
+  }
+
   return (
     <FormStyled onSubmit={handleSubmit}>
       <IssueLabelField
         value={label}
-        onChange={e => setLabel(e.currentTarget.value)}
+        onChange={handleChange}
+        onKeyDown={handlekeyDown}
         placeholder='Issue Summary'
         autoFocus={focusOnFirstField}
       />

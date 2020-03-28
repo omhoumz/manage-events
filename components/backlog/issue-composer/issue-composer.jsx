@@ -1,8 +1,9 @@
 import React, { memo, useState } from 'react'
+import dynamic from 'next/dynamic'
 import AddIcon from '@material-ui/icons/Add'
 
 import { ComposerWrapper, Button, ButtonLabel } from './issue-composer.styled'
-import IssueForm from '../issue-form/issue-form'
+const IssueForm = dynamic(() => import('../issue-form/issue-form'))
 
 const IssueComposer = memo(function IssueComposer({ handleIssueCreate }) {
   const [isCreatingIssue, setIsCreatingIssue] = useState(false)
@@ -12,10 +13,18 @@ const IssueComposer = memo(function IssueComposer({ handleIssueCreate }) {
     setIsCreatingIssue(false)
   }
 
+  const handleCancel = () => {
+    setIsCreatingIssue(false)
+  }
+
   return (
     <ComposerWrapper>
       {isCreatingIssue ? (
-        <IssueForm handleIssueCreate={handleIssueSubmit} focusOnFirstField />
+        <IssueForm
+          handleIssueCreate={handleIssueSubmit}
+          handleCancel={handleCancel}
+          focusOnFirstField
+        />
       ) : (
         <Button onClick={() => setIsCreatingIssue(true)}>
           <AddIcon fontSize='small' />
