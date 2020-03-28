@@ -1,24 +1,19 @@
 import styled from 'styled-components'
 
-import { blue100, blue500 } from '../../ui/theme/colors'
+import { blue100, blue500, grey300 } from '../../ui/theme/colors'
 
-export const IssuesWrapper = styled.div`
-  > * + * {
-    margin-block-start: 0.3em;
-  }
-`
+export const IssuesWrapper = styled.div``
 
 export const IssueItem = styled.div`
   display: flex;
+  justify-content: space-between;
   padding: 1em;
 
-  border-radius: 4px;
-  background-color: ${blue100};
-
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid ${grey300};
+  background-color: transparent;
 
   :hover {
-    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+    background-color: ${blue100};
   }
 
   > * + * {
@@ -26,7 +21,8 @@ export const IssueItem = styled.div`
   }
 `
 
-export const IssueId = styled.div`
+export const IssueLabel = styled.div``
+
+export const IssueCreatedTime = styled.div`
   color: ${blue500};
 `
-export const IssueLabel = styled.div``

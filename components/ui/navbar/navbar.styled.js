@@ -12,7 +12,7 @@ export const NavbarWrapper = styled.header`
 
   color: white;
   background-color: ${blue500};
-  border: 2px solid ${blue800};
+  border-bottom: 2px solid ${blue800};
 `
 
 export const NavLinksWrapper = styled.nav`
@@ -35,6 +35,7 @@ export const NavLink = styled.a`
 
 export const LogoWrapper = styled.div`
   display: flex;
+  align-items: center;
 `
 
 export const Logo = styled.div`

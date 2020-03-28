@@ -18,10 +18,11 @@ const getRTIssues = updateFunc => {
     const issues = []
     querySnapshot.forEach(function(doc) {
       if (doc && doc.exists) {
-        const { label } = doc.data()
+        const { label, timestamp } = doc.data()
         issues.push({
           id: doc.id,
           label,
+          created: timestamp.toDate(),
         })
       }
     })
