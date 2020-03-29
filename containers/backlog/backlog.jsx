@@ -22,7 +22,7 @@ const getRTIssues = updateFunc => {
         issues.push({
           id: doc.id,
           label,
-          created: timestamp.toDate(),
+          created: timestamp?.toDate() || '',
         })
       }
     })
