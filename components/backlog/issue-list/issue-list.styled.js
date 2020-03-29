@@ -1,13 +1,14 @@
 import styled from 'styled-components'
 
-import { blue100, blue500, grey300 } from '../../ui/theme/colors'
+import { blue100, grey300, grey500 } from '../../ui/theme/colors'
 
 export const IssuesWrapper = styled.div``
 
 export const IssueItem = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 1em;
+  align-items: center;
+  padding: 0.6em;
 
   border-bottom: 1px solid ${grey300};
   background-color: transparent;
@@ -24,5 +25,15 @@ export const IssueItem = styled.div`
 export const IssueLabel = styled.div``
 
 export const IssueCreatedTime = styled.div`
-  color: ${blue500};
+  color: ${grey500};
+  font-size: 14px;
+`
+
+export const IssueMeta = styled.div`
+  display: flex;
+  align-items: center;
+
+  > * + * {
+    margin-inline-start: 1em;
+  }
 `
