@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { blue100, grey300, grey500 } from '../../ui/theme/colors'
+import { blue100, grey300, grey500, blue500 } from '../../ui/theme/colors'
 
 export const IssuesWrapper = styled.div``
 
@@ -10,6 +10,7 @@ export const IssueItem = styled.div`
   align-items: center;
   padding: 0.6em;
 
+  white-space: nowrap;
   border-bottom: 1px solid ${grey300};
   background-color: transparent;
 
@@ -22,6 +23,15 @@ export const IssueItem = styled.div`
   }
 `
 
+export const IssueData = styled.div`
+  display: flex;
+  align-items: center;
+
+  > * + * {
+    margin-inline-start: ${({ gap }) => gap || '0.5em'};
+  }
+`
+
 export const IssueLabel = styled.div``
 
 export const IssueCreatedTime = styled.div`
@@ -29,11 +39,18 @@ export const IssueCreatedTime = styled.div`
   font-size: 14px;
 `
 
-export const IssueMeta = styled.div`
+export const IssueEstimate = styled.div`
   display: flex;
   align-items: center;
 
-  > * + * {
-    margin-inline-start: 1em;
-  }
+  padding: 2px 6px;
+  font-size: 12px;
+  line-height: 1;
+
+  border: 1px solid ${blue500};
+  white-space: nowrap;
+
+  border-radius: 40px;
+  background-color: ${blue100};
+  color: ${blue500};
 `

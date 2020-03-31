@@ -1,12 +1,14 @@
 import React, { memo } from 'react'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 import {
   IssuesWrapper,
   IssueItem,
   IssueCreatedTime,
   IssueLabel,
-  IssueMeta,
+  IssueEstimate,
+  IssueData,
 } from './issue-list.styled'
 import IconButton from '../../ui/icon-button/icon-button'
 import { grey500 } from '../../ui/theme/colors'
@@ -18,20 +20,26 @@ const options = {
   minute: 'numeric',
 }
 
-const IssueList = memo(function IssueList({ issues }) {
+const IssueList = memo(function IssueList({ issues, deleteIssue }) {
   return (
     <IssuesWrapper>
-      {issues.map(({ label, id, created }) => (
+      {issues.map(({ label, id, created, estimate }) => (
         <IssueItem key={String(id)}>
-          <IssueLabel>{label}</IssueLabel>
-          <IssueMeta>
+          <IssueData gap='0.3em'>
+            <IssueEstimate>{`${estimate} d`}</IssueEstimate>
+            <IssueLabel>{label}</IssueLabel>
+          </IssueData>
+          <IssueData gap='0.8em'>
+            <IconButton color={grey500} onClick={() => deleteIssue(id)}>
+              <DeleteIcon color='inherit' />
+            </IconButton>
             <IconButton color={grey500}>
               <AccountCircleIcon color='inherit' />
             </IconButton>
             <IssueCreatedTime>
               {new Intl.DateTimeFormat('en-EN', options).format(created)}
             </IssueCreatedTime>
-          </IssueMeta>
+          </IssueData>
         </IssueItem>
       ))}
     </IssuesWrapper>
