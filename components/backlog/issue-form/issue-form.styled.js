@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 import { blue300, blue100 } from '../../ui/theme/colors'
 
-export const FormStyled = styled.form``
+export const FormStyled = styled.form`
+  display: flex;
+`
 
-export const IssueLabelField = styled.input.attrs({
-  type: 'text',
-})`
+export const IssueLabelField = styled.input`
   padding: 0.4em 0.6em;
   font-size: 1em;
   width: 100%;

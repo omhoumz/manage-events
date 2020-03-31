@@ -2,17 +2,25 @@ import React, { memo, useState } from 'react'
 
 import { FormStyled, IssueLabelField } from './issue-form.styled'
 
+const ESTIMATE_MAX = 9
+const ESTIMATE_MIN = 1
+
 const IssueForm = memo(function IssueForm({
   handleIssueCreate,
   handleCancel,
   focusOnFirstField,
 }) {
   const [label, setLabel] = useState('')
+  const [estimate, setEstimate] = useState(0)
 
   const handleSubmit = e => {
     e.preventDefault()
-    if (!label) return
-    handleIssueCreate({ label })
+    const isDataValid =
+      label && estimate > ESTIMATE_MIN && estimate < ESTIMATE_MAX
+
+    if (!isDataValid) return
+
+    handleIssueCreate({ label, estimate })
     setLabel('')
   }
 
@@ -35,7 +43,19 @@ const IssueForm = memo(function IssueForm({
         onKeyDown={handlekeyDown}
         placeholder='Issue Summary'
         autoFocus={focusOnFirstField}
+        type='text'
       />
+      <IssueLabelField
+        value={estimate}
+        type='number'
+        onChange={e => setEstimate(e.currentTarget.value)}
+        min={ESTIMATE_MIN}
+        max={ESTIMATE_MAX}
+        style={{ 'flex-basis': '20%' }}
+      />
+      <div style={{ display: 'none' }}>
+        <button type='submit' />
+      </div>
     </FormStyled>
   )
 })
