@@ -1,3 +1,3 @@
 # manage-events
 
-Uses: nextjs, reactjs, styled-components, polished, @material-ui/icons
+Uses: gatsby, reactjs, styled-components, polished, @material-ui/icons
